@@ -1,34 +1,45 @@
-import numpy as np
+import numpy as np #setting the stage
 import xlrd
 import xlwt
 
 
-workbook = xlrd.open_workbook('NYGasPrices')
+workbook = xlrd.open_workbook('NYGasPrices') #to upload
+#NYGasPrices is the relevent data from the spreadsheet given by the EIA download
 
-
-
-
-#once upload works
 prices = []
 
 for i in range(1,360):
-    galdol = workbook(i,1) #becasue start indexing at zero
+    galdol = workbook.cell_value(i,1) #becasue start indexing at zero
     prices.append(galdol)
     
     
 january = 0
 year = 12
-annual = []
+annualavg = []
 
-for i in range(1,30):        
-    yravg = np.mean(january:year)
-    annual.append(yravg)
+for i in range(0,30):        
+    yravg = np.mean(prices[january:january+year])
+    annualavg= np.append(yravg)
+    january = january + year
     
 final = np.zeros[30,2]
-final[:,1] == 1987 + arange(30)
+final[:,0] == 1987 + np.arange(30)
 
-final[:,2] == annual
+final[:,1] == np.transpose(annualavg)
 
+#to export
+workbook2 = xlw.Workbook('monthly_average_price.xlsx')
+worksheet = workbook2.add_worksheet()
 
-#then figure out how to send back to xls
+row = 1
+col = 0
+worksheet.write(col,0,'Year')
+worksheet.write(col,1,'Average Price')
+
+for item, price in (final):
+    worksheet.write(row,col,item)
+    worksheet.write(row,col+1,price)
+    row = row + 1
+
+workbook2.close()
     
