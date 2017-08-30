@@ -1,14 +1,17 @@
 import numpy as np #setting the stage
 import xlrd
-import xlwt
+import xlsxwriter as xlw
 
 
-workbook = xlrd.open_workbook('NYGasPrices') #to upload
+workbook = xlrd.open_workbook('NYGasPrices.xls') #to upload
 #NYGasPrices is the relevent data from the spreadsheet given by the EIA download
 
 prices = []
 
 for i in range(1,360):
+    
+    # Sarah, I'm getting an error right here. Do you need to specify the correct sheet above? I don't have your .xls file so I can't
+    # tell what it looks like. 
     galdol = workbook.cell_value(i,1) #becasue start indexing at zero
     prices.append(galdol)
     
