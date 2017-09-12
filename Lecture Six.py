@@ -67,7 +67,7 @@ plt.ylabel('Electricity Demand (MWh)',fontsize=24)
 Jan_Avg = np.zeros((24,1))
 
 for i in range(0,24):
-    Jan_Avg[i] = np.mean(demand[0:30,i])
+    Jan_Avg[i] = np.mean(demand[0:31,i])
     
 plt.figure()
 hours = np.arange(1,25)
@@ -78,7 +78,7 @@ plt.scatter(hours,Jan_Avg)
 July_Avg = np.zeros((24,1))
 
 for i in range(0,24):
-    July_Avg[i] = np.mean(demand[181:211,i])
+    July_Avg[i] = np.mean(demand[181:212,i])
     
 plt.figure()
 hours = np.arange(1,25)
